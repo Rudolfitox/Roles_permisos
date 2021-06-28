@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/areas',AreaController::class);
+
+//Aqui se tiene que crear un middleware personalizado para poder pasale parametros
+Route::resource('/areas',AreaController::class)->middleware('can:isAdmin');
 Route::resource('/subareas',SubareaController::class);
 Route::resource('/permisos',PermisoController::class);
